@@ -4,7 +4,7 @@ str "abb"
 %} 
 %% 
     /* match identifier */ 
-.{str}({str})* | {str}({str})*       count++; 
+({str}({str})*)+       count++; 
 %% 
 int main(void) { 
     yylex(); 
