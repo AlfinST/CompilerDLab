@@ -1,0 +1,89 @@
+    1      1 Identifier      struct
+    1      8 Identifier      Structure
+    2      1 LeftBrace      
+    3      2 Identifier      int
+    3      6 Identifier      Struct_var_1
+    3     18 Semicolon      
+    4      2 Identifier      float
+    4      8 Identifier      Struct_var_2
+    4     20 Semicolon      
+    5      1 RightBrace     
+    7      1 Identifier      void
+    7      6 Identifier      Message
+    7     13 LeftParen      
+    7     14 Identifier      int
+    7     18 Identifier      a
+    7     19 Comma          
+    7     21 Identifier      char
+    7     26 Identifier      c
+    7     27 RightParen     
+    8      1 LeftBrace      
+    9      2 Identifier      char
+    9      7 Identifier      Msg
+    9     11 Op_assign      
+    9     13 String          "Merry X-Mas"
+    9     27 Op_add         
+    9     29 Identifier      c
+    9     30 Semicolon      
+   10      2 Keyword_if     
+   10      5 LeftParen      
+   10      6 Identifier      a
+   10      7 Op_notequal    
+   10      9 Integer          1337
+   10     13 RightParen     
+   11      2 LeftBrace      
+   12      3 Identifier      return
+   12      9 Semicolon      
+   13      2 RightBrace     
+   14      2 Keyword_else   
+   15      2 LeftBrace      
+   16      3 Identifier      printf
+   16      9 LeftParen      
+   16     10 String          "And Happy New Year !!"
+   16     33 RightParen     
+   16     34 Semicolon      
+   17      2 RightBrace     
+   18      1 RightBrace     
+   20      1 Identifier      void
+   20      6 Identifier      main
+   20     10 LeftParen      
+   20     11 RightParen     
+   21      1 LeftBrace      
+   22      2 Identifier      int
+   22      6 Identifier      Integer_Var
+   22     17 Semicolon      
+   23      2 Identifier      char
+   23      7 Identifier      Character_Var
+   23     20 Semicolon      
+   24      2 Identifier      for
+   24      5 LeftParen      
+   24      6 Identifier      int
+   24     10 Identifier      i
+   24     11 Op_assign      
+   24     12 Integer             0
+   24     13 Semicolon      
+   24     15 Identifier      i
+   24     16 Op_less        
+   24     17 Integer            10
+   24     19 Semicolon      
+   24     20 RightParen     
+   25      2 LeftBrace      
+   26      3 Identifier      printf
+   26      9 LeftParen      
+   26     10 String          "Hello World\n"
+   26     25 RightParen     
+   26     26 Semicolon      
+   27      3 Identifier      i
+   27      4 Op_add         
+   27      5 Op_add         
+   27      6 Semicolon      
+   28      2 RightBrace     
+   29      2 Identifier      printf
+   29      8 LeftParen      
+   29      9 String          "Enter a Number: "
+   29     27 RightParen     
+   29     28 Semicolon      
+   30      2 Identifier      scanf
+   30      7 LeftParen      
+   30      8 String          "%d"
+   30     12 Comma          
