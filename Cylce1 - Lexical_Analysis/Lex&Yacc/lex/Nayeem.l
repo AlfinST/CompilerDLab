@@ -4,8 +4,7 @@ str "aba"
 %} 
 %% 
     /* match identifier */ 
-.*({str}({str})*)+       {count++;printf("a");} 
-.*  {printf(yytext);}
+({str})       {count++;printf("a");} 
 %% 
 int main(void) { 
     yylex(); 
