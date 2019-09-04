@@ -3,6 +3,7 @@
 	BE SMART AND JUST DO THIS WITH LINKED LISTS.....
 	I WAS BORED AND WANTED OT TRY SOMETHING OUT.
 
+	YOU HAVE BEEN WARNED
 */
 
 #include <stdio.h>
@@ -21,7 +22,7 @@ void main()
 	char Trans[50]="";
 	int Stack[10];
 	int Visited[10];	
-	int N,i,j,k,l,d=0,done,E=0,top=0,Vcount=0,VFlag,OldE;
+	int N,m,i,j,k,l,d=0,done,E=0,top=0,Vcount=0,VFlag,OldE;
 	printf("Enter The Number of States:");
 	scanf("%d",&N);
 	printf("Enter Names of States:\n");
@@ -41,6 +42,13 @@ void main()
 		}	
 	}
 	// Strip the string Also
+	/*
+	This Area below is for the sole purpose of understanding the input.
+	It searches the Transitions and finds the "e" transition.
+		All the searching is done directly below.
+	Once found it adds that index to the Epsilons array of the object
+	and it also sets the EspsTop to top of stack.
+	*/
 	for(i=0;i<N;i++)
 	{	//Selecting the State
 		top=0;
@@ -99,12 +107,19 @@ void main()
 		top=0;
 		Vcount=0;
 	}
+/*
+	Prints the entire table 
+*/
 
 //	Testing
 	for(i=0;i<N;i++)
 	{
-		printf("\n\\%s\n",S[i].name);
-		printf("\n");
+		printf("\t%s",S[i].name);
+	}
+	printf("\n");
+	for(i=0;i<N;i++)
+	{
+		printf("\n%s\t",S[i].name);
 		for(j=0;j<N;j++)
 		{
 			printf("%s\t",S[i].Transitions[j]);
@@ -114,6 +129,20 @@ void main()
 	//Getting CLosure
 	for(i=0;i<N;i++)
 	{
+		/* 
+			Fill the Closure with -1
+			And pick the starting State
+				have a counter to indicate index in the EpsilonClosure Array
+				Compare elements of States epsilons with the EpsilonClosure array:
+					if not in Closure Array:
+						Add it ot Closure Array
+					else
+						ignore/continue
+				change the State to next from counter;
+			print the Closure
+		*/
+		for(m=0;m<10;m++)
+			EpsilonClosure[m]=-1;
 		EpsilonClosure[0]=i;
 		E=1;
 		done =0;
@@ -135,39 +164,32 @@ void main()
 					// printf("\t\t\tchecking S[%d].Epsilons[%d]  (%d) == EpsilonClosure[%d]  (%d) \n",d,j,S[d].Epsilons[j],k,EpsilonClosure[k]);
 					if(S[d].Epsilons[j] == EpsilonClosure[k])
 						{	
-							// printf("\t\t\tAlready Present\n");
+						//	printf("\t\t\tAlready Present\n");
 							VFlag = 1;
 						}
 				}
 				if(VFlag == 0)
 				{	
-					// printf("\t\t Added %d to Closure\n",S[d].Epsilons[j]);
+				//	printf("\t\t Added %d to Closure\n",S[d].Epsilons[j]);
 					EpsilonClosure[E++]=S[d].Epsilons[j];
-					//Vcount++;
-					//printf("\t\t\tVcount incremented to %d\n",Vcount);	
 				}
 			}
-			//else
-			//{
-				if(OldE==E )
-				{
-					Vcount++;
-					// printf("\t\t\tSame E so Vcount++ %d\n",Vcount);
-				}
-			//}
 			if(Vcount>=E)
 			{
 				done = 1;
 			}
 			d=EpsilonClosure[++Vcount];
-			// printf("\t\tUpdated d to %d\n",d);
-			if(d>Vcount)
-				d=-1;
+			//printf("\t\tUpdated d to %d\n",d);
+			if(d==-1)
+				{
+					d=-1;
+					done =1;
+				}
 		}
-		printf("\n\t\tClosure of %s ::\n",S[i].name);
+		printf("\n\tClosure of %s ::\n",S[i].name);
 		for(j=0;j<E;j++)
 
-			printf("\t\t%s\n",S[EpsilonClosure[j]].name);
+			printf("\t\t\t%s\n",S[EpsilonClosure[j]].name);
 
 	}
 
