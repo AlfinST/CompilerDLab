@@ -11,5 +11,6 @@
 4. Follow zero based indexing everywhere
 5. Program assumes that if "Number of states are = n", then they are numbered as q0, q1, q2 ... q(n-1)
 
-### Original Source : https://gist.github.com/kipawa/10fec56cab1f8d0c33a9
+#### Original Source : https://gist.github.com/kipawa/10fec56cab1f8d0c33a9
 
+### The bugs in the source was fixed and a better printing methd was added by me :P
