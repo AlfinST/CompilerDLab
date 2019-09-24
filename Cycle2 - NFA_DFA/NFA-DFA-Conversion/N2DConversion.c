@@ -85,7 +85,7 @@ int main()
      //for new states
      for(i=0;i<x;i++)
      {
-     		printf("for new state %d ---- ",arr[i]);
+     		// printf("for new state %d ---- ",arr[i]);
      		for(j=0;j<2;j++)
      		{
      				int new=0;
@@ -120,10 +120,8 @@ int main()
           int x =0;
      		if(state[i]==1)
      		{
-     				//printf("%d**",i);
      				int y=0;
      				if(i==0)
-     					// printf("q0 ");
      				      continue;
      				else
           				for(j=0;j<st;j++)
@@ -133,18 +131,15 @@ int main()
           						{
           							printf("q%d ",j);
           							y = y+pow(2,j);
-          							//printf("y=%d  ",y);
           						}
           				}
      				printf("\t\t");
                          for(j=0;j<st;j++)
                               {
                                         x = 1<<j;
-                                        if(x& (go[y][0]))
+                                        if(x& (go[y    ][0]))
                                         {
                                              printf("q%d ",j);
-                                             // y = y+pow(2,j);
-                                             //printf("y=%d  ",y);
                                         }
                               }
                          printf("\t"); 
@@ -154,11 +149,9 @@ int main()
                                         if(x& (go[y][1]))
                                         {
                                              printf("q%d ",j);
-                                             // y = y+pow(2,j);
-                                             //printf("y=%d  ",y);
+
                                         }
                               };
-     				// printf("\t\t%d\t%d",go[y][0],go[y][1]);
      				printf("\n");
      		}
      }
