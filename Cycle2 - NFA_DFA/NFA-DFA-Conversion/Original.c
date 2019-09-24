@@ -1,3 +1,22 @@
+/* A program to convert NFA to DFA using conversion table
+   Author - Kipawa
+   Technique used - Bitmasking
+NOTE - 
+1. If your states are q0, q1, q2 they will be represented as follows (in the table)
+q0 = 2^0 = 1
+q1 = 2^1 = 2
+q2 = 2^2 = 4
+2. Similarly union of states will be represented as - 
+q0,q1 = 2^0 + 2^1 = 3
+q1, q2 = 2^1 + 2^2 = 6
+q0,q1,q2 = 2^0 + 2^1 + 2^2 = 7
+3. Do not give any condition for "phi"...
+That case is not handled... (Coz I m Lazy :P)
+4. Follow zero based indexing everywhere
+5. Program assumes that if "Number of states are = n", then they are numbered as q0, q1, q2 ... q(n-1)
+6. If you find any bug, msg me and forgive me for the errors
+*/
+
 #include<stdio.h>
 #include<string.h>
 #include<math.h>
@@ -40,15 +59,18 @@ int main()
      printf("\nEnter the number of rules according to NFA::");
      scanf("%d",&rel);
      
-     printf("\n\nDefine transition rule as \"initial state<space>input symbol<space>final state\"\n");
+     printf("\n\nDefine transition rule as \"initial state input symbol final state\"\n");
 
      
      
      for(i=0; i<rel; i++)
      {
-          scanf("%d %d %d",&p,&q,&r);
-		dfa[p][q][r] = 1;
-	}
+          scanf("%d%d%d",&p,&q,&r);
+		  if (q==0)
+		  	dfa[p][0][r] = 1;
+		  else 
+		  	dfa[p][1][r] = 1;          
+     }
      
      printf("\nEnter initial state::");
      scanf("%d",&in);
@@ -73,7 +95,7 @@ int main()
      				
      				
      				go[(int)(pow(2,i))][j] = stf;
-     				printf("gp[%d][%d]-->%d\n",(int)(pow(2,i)),j,stf);
+     				printf("%d-%d-->%d\n",(int)(pow(2,i)),j,stf);
      				if(state[stf]==0)
      					arr[x++] = stf;		
      				state[stf] = 1;
@@ -85,7 +107,7 @@ int main()
      //for new states
      for(i=0;i<x;i++)
      {
-     		printf("for new state %d ---- ",arr[i]);
+     		printf("for %d ---- ",arr[x]);
      		for(j=0;j<2;j++)
      		{
      				int new=0;
@@ -99,7 +121,7 @@ int main()
      									new = go[h][j];
      								new = new | (go[h][j]);
      								
-     								go[arr[i]][j] = new;
+     								
      						}
      				}
      				
@@ -113,55 +135,71 @@ int main()
      
      printf("\nThe total number of distinct states are::\n");
      
-     printf("STATE\t\t0\t1\n");
+     printf("STATE     0   1\n");
      
      for(i=0;i<10000;i++)
      {
-          int x =0;
      		if(state[i]==1)
      		{
      				//printf("%d**",i);
      				int y=0;
      				if(i==0)
-     					// printf("q0 ");
-     				      continue;
+     					printf("q0 ");
+     				
      				else
-          				for(j=0;j<st;j++)
-          				{
-          						x = 1<<j;
-          						if(i&x)
-          						{
-          							printf("q%d ",j);
-          							y = y+pow(2,j);
-          							//printf("y=%d  ",y);
-          						}
-          				}
-     				printf("\t\t");
-                         for(j=0;j<st;j++)
-                              {
-                                        x = 1<<j;
-                                        if(x& (go[y][0]))
-                                        {
-                                             printf("q%d ",j);
-                                             // y = y+pow(2,j);
-                                             //printf("y=%d  ",y);
-                                        }
-                              }
-                         printf("\t"); 
-                         for(j=0;j<st;j++)
-                              {
-                                        x = 1<<j;
-                                        if(x& (go[y][1]))
-                                        {
-                                             printf("q%d ",j);
-                                             // y = y+pow(2,j);
-                                             //printf("y=%d  ",y);
-                                        }
-                              };
-     				// printf("\t\t%d\t%d",go[y][0],go[y][1]);
+     				for(j=0;j<st;j++)
+     				{
+     						int x = 1<<j;
+     						if(x&i)
+     						{
+     							printf("q%d ",j);
+     							y = y+pow(2,j);
+     							//printf("y=%d  ",y);
+     						}
+     				}
+     				//printf("%d",y);
+     				printf("       %d   %d",go[y][0],go[y][1]);
      				printf("\n");
      		}
      }
-     	 
+     
+     
+     
+     j=3;
+     while(j--)
+     {
+     		printf("\nEnter string");
+			scanf("%s",str);
+			l = strlen(str);
+			curr1 = in;
+			flag = 0;
+			printf("\nString takes the following path-->\n");
+			printf("%d-",curr1);
+
+			for(i=0;i<l;i++)
+			{
+				curr1 = go[curr1][str[i]-'0'];
+				printf("%d-",curr1);
+			}
+			
+			printf("\nFinal state - %d\n",curr1);
+			
+			for(i=0;i<fin;i++)
+			{
+					if(curr1 & (1<<f[i]))
+					{
+							flag = 1;
+							break;
+					}
+			}
+			
+			if(flag)
+				printf("\nString Accepted");
+			else
+				printf("\nString Rejected"); 		
+			     		
+	 }
+		 
+	
 	return 0;
 }
