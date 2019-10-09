@@ -103,20 +103,3 @@ void main()
 		printf("\t\t\t");
 	}
 }
-/*
-output:
-Enter the value for * *:>
-Enter the value for * $:>                                                       
-Enter the value for $ i:<                                                       
-Enter the value for $ +:<                                                       
-Enter the value for $ *:<                                                       
-Enter the value for $ $:accept                                                  
-                                                                                
-**** OPERATOR PRECEDENCE TABLE ****                                             
-        i       +       *       $                                               
-                                                                                
-i       e       >       >       >                                               
-+       <       >       <       >                                               
-*       <       >       >       >                                               
-$       <       <       <       a
-*/
