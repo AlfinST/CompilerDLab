@@ -1,8 +1,28 @@
 #include<stdio.h>
 #include<string.h>
+	
+char Productions_List[100][100][100];
 
-int AddProductionsToList(char (*Productions_List)[100][100], int Variable_Number, char Production[100])
+void DisplayTransitions(char Variable_List[100],int Corresponding_Number_of_Productions[100],int N)
 {
+	int i,j,z;
+	for(i=0;i<N;i++)
+	{	
+		for (j=0;j<Corresponding_Number_of_Productions[i];j++)
+		{	
+			printf(" %c -> ",Variable_List[i]);		
+			for(z = 0 ;Productions_List[i][j][z] !='\0';z++)
+			{
+				printf("%c",Productions_List[i][j][z]);
+			}	
+			printf("\n");	
+		}
+	}
+}
+
+int AddProductionsToList( int Variable_Number, char Production[100])
+{	
+	// printf("Adding to Variable_Number:%d -> %s\n",Variable_Number,Production);
 	int i,j,len;
 	int Production_Number = 0;
 	len = strlen(Production);
@@ -10,7 +30,6 @@ int AddProductionsToList(char (*Productions_List)[100][100], int Variable_Number
 	{
 		if (Production[i] == '|')
 			{	
-				printf("Encountered A |\n");
 				Productions_List[Variable_Number][Production_Number][j] = '\0';
 				Production_Number ++;
 				j=0;
@@ -21,13 +40,13 @@ int AddProductionsToList(char (*Productions_List)[100][100], int Variable_Number
 				j++;  	
 			}
 	}
+
 	return(Production_Number+1);
 }
-
 	
+
 void main(void)
 {
-	char Productions_List[1][100][100];
 	int N,i,j,z;
 	int Number_of_Productions = 0,Variable_Number = 0;
 	char Variable, Start_Variable ='S' , Production[100];
@@ -35,35 +54,26 @@ void main(void)
 	int Corresponding_Number_of_Productions[100];
 	printf("Enter number of Productions:");
 	scanf("%d",&N);
-	printf("Enter The Productions:\nFormat:\tVariable -> Production\n");
-	printf("S->");
+	printf("Enter The Productions:\nFormat:\tVariable -> Production\n# is Epsilon ε\n");
+	printf("S -> ");
 	scanf("%s",Production);
 	
 	Variable_List[Variable_Number] = Start_Variable;
-	Number_of_Productions = AddProductionsToList(Productions_List ,Variable_Number, Production);
+	Number_of_Productions = AddProductionsToList(Variable_Number, Production);
 	Corresponding_Number_of_Productions[Variable_Number]= Number_of_Productions;
 	Variable_Number++;
 
-	printf("Stats of S:\n Number_of_Productions\t%d\n",Number_of_Productions);
-
 	for(i=1;i<N;i++)
 	{
-		scanf("%c->%s",&Variable,&Production);
+		scanf("\n%c -> %s",&Variable,Production);
 		Variable_List[Variable_Number] = Variable;
-		Number_of_Productions = AddProductionsToList(Productions_List, Variable_Number, Production);
+		Number_of_Productions = AddProductionsToList(Variable_Number, Production);
 		Corresponding_Number_of_Productions[Variable_Number] = Number_of_Productions;	
 		Variable_Number++;
 	}
 
-	for(i=0;i<N;i++)
-	{
-		for (j=0;j<Corresponding_Number_of_Productions[i];j++);
-		{
-			printf("%c -> ",Variable_List[i]);	
-			printf("%s\n",Productions_List[i][j]);
-			for(z=0;Productions_List[i][j][z]!='\0';z++)
-				printf("%d %d %d %c",i,j,z,Productions_List[i][j][z]);
-			printf("\n");
-		}	
-	}
+	DisplayTransitions(Variable_List,Corresponding_Number_of_Productions,N);
+	
+
+	
 }
