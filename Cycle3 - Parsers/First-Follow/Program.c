@@ -28,7 +28,6 @@ void Add_Terminal_To_First(char terminal, char First[100][100],int Variable_Numb
 }
 int AddProductionsToList( int Variable_Number, char Production[100])
 {	
-	// printf("Adding to Variable_Number:%d -> %s\n",Variable_Number,Production);
 	int i,j,len;
 	int Production_Number = 0;
 	len = strlen(Production);
@@ -86,6 +85,13 @@ int Find_First(char First[100][100],int Corresponding_Number_of_Productions[100]
 	int Nullout = 0,position;
 	char t;
 	Variable_Number = GetVariableNumber(original,Variable_list,Total);
+	
+	if(Found[Variable_Number] == -1)
+		return -1;
+
+	if(Found[Variable_Number] == 1)
+		return 1;
+	
 	position = 0;
 	precision = 0;
 
@@ -111,6 +117,7 @@ int Find_First(char First[100][100],int Corresponding_Number_of_Productions[100]
 					len = strlen(Productions_List[Variable_Number][i]);
 					if(precision<len)
 					{
+						printf("\t\tNeed to go 1 more round casue of #");
 						precision+=1;
 					}
 				}
@@ -119,16 +126,15 @@ int Find_First(char First[100][100],int Corresponding_Number_of_Productions[100]
 			{ 
 				Nullout=-1;
 				Add_Terminal_To_First(t,First,Variable_Number);	
-
+				Found[Variable_Number] = Nullout;
 			}
 			else
 			{	
 				Add_Terminal_To_First(t,First,Variable_Number);
+				Found[Variable_Number] = 1;
 			}
 		}	
 	}
-	Found[Variable_Number] = 1;
-	// printf("Finished for %c  First = %s\n",Variable_list[Variable_Number],First[Variable_Number]);
 	return(Nullout);
 }
 
@@ -142,7 +148,7 @@ void main(void)
 	int Corresponding_Number_of_Productions[100];
 	printf("Enter number of Productions:");
 	scanf("%d",&N);
-	printf("Enter The Productions:\nFormat:\tVariable -> Production\n# is Epsilon ε\n");
+	printf("Enter The Productions:\nFormat:\tVariable -> Production1|...|Production N\n# is Epsilon ε\n");
 	printf("S -> ");
 	scanf("%s",Production);
 	
@@ -184,3 +190,5 @@ void main(void)
 	}
 	
 }
+
+
