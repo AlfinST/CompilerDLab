@@ -11,13 +11,8 @@
 | . | . | . |
 | . | . | . |
 
-| Command | Description |
-| --- | --- |
-| `git status` | List all *new or modified* files |
-| `git diff` | Show file differences that **haven't been** staged |
-| 0 | kabklkmaf |
-
   Variabel List is a table like:
+  
 Variable_Number		|		Variable
 :----------:|:------------:
 0			|		S
