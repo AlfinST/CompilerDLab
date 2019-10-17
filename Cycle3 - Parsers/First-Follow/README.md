@@ -1,14 +1,21 @@
 ## In Program
   AddProductionToList adds to Productions_List the Production and  
   Creates a Table like:
-|Variable_Numeber|Production_Number|Production|
-|:-----:|:-----:|:-----:|
-|0|0|A+A|
-|0|1|A*A|
-|0|2|A/A|
-|1|0|id|
-|.|.|.|
-|.|.|.|
+
+| Variable_Numeber | Production_Number | Production |
+| --- | --- | --- |
+| 0 | 0 | A+A |
+| 0 | 1 | A*A |
+| 0 | 2 | A/A |
+| 1 | 0 | id |
+| . | . | . |
+| . | . | . |
+
+| Command | Description |
+| --- | --- |
+| `git status` | List all *new or modified* files |
+| `git diff` | Show file differences that **haven't been** staged |
+| 0 | kabklkmaf |
 
   Variabel List is a table like:
 Variable_Number		|		Variable
