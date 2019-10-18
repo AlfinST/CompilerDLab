@@ -1,5 +1,5 @@
 4
-abA|bz
-A -> #|lsBC
-B -> #|c
-C -> #|d
+ACD
+A -> #|CD   
+C -> c|D
+D -> d

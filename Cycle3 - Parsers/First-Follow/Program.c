@@ -179,7 +179,7 @@ void Follow_Of(char Follow[100][100],char First[100][100],int original,char Vari
 							{
 								Add_Terminal_To_List(Follow[Variable_Number][i],Follow,original,1);
 							}
-							// printf("\nDone\n");
+							// printf("Done\n");
 							break;
 						}
 						else
@@ -219,7 +219,7 @@ void Follow_Of(char Follow[100][100],char First[100][100],int original,char Vari
 										}
 										else
 										{
-											// printf("\t\tNot a Terminal\n");
+											// printf("\t\tIs a Vaiable\n");
 											temp_number = GetVariableNumber(temp,Variable_List,N);
 											if(Found[temp_number]==-1)
 											{
