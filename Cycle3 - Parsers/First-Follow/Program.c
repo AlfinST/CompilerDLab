@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<string.h>
-	
+#include<ctype.h>
+
 char Productions_List[100][100][100];
 int FollowFound[100]={0};
 
