@@ -350,5 +350,3 @@ void main(void)
 		printf("\n");
 	}
 }
-
-
