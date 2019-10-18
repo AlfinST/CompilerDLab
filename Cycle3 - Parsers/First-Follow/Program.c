@@ -2,7 +2,7 @@
 #include<string.h>
 	
 char Productions_List[100][100][100];
-
+int FollowFound[100]={0};
 
 void Add_Terminal_To_List(char terminal, char List[100][100],int Variable_Number,int mode)
 {
@@ -93,7 +93,7 @@ int Find_First(char First[100][100],int Corresponding_Number_of_Productions[100]
 	int Nullout = 0,position;
 	char t;
 	Variable_Number = GetVariableNumber(original,Variable_list,Total);
-	
+
 	if(Found[Variable_Number] == -1)
 		return -1;
 
@@ -150,6 +150,15 @@ int Find_First(char First[100][100],int Corresponding_Number_of_Productions[100]
 void Follow_Of(char Follow[100][100],char First[100][100],int original,char Variable_List[100],int N,int Corresponding_Number_of_Productions[100],int Found[100])
 {
 	// printf("In Follow(%c)\n",Variable_List[original]);
+	if(FollowFound[original]!=0)
+	{
+		return;
+	}
+	else
+	{
+		FollowFound[original]= 1;
+	}
+	
 	char Variable = Variable_List[original];
 	int Character_Number,i,j,Variable_Number;
 	char character,next_character,temp;
@@ -295,9 +304,9 @@ void main(void)
 		Corresponding_Number_of_Productions[Variable_Number] = Number_of_Productions;	
 		Variable_Number++;
 	}
-
+	printf("\n\n");
 	DisplayTransitions(Variable_List,Corresponding_Number_of_Productions,N);
-	
+	printf("\n\n");
 	// Find_First()
 	for(i=0;i<N;i++)
 	{
