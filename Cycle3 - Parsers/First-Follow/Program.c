@@ -219,7 +219,7 @@ void Follow_Of(char Follow[100][100],char First[100][100],int original,char Vari
 										}
 										else
 										{
-											// printf("\t\tIs a Vaiable\n");
+											// printf("\t\tIs a Variable\n");
 											temp_number = GetVariableNumber(temp,Variable_List,N);
 											if(Found[temp_number]==-1)
 											{
@@ -231,7 +231,8 @@ void Follow_Of(char Follow[100][100],char First[100][100],int original,char Vari
 											}
 											else
 											{
-												Add_Terminal_To_List(temp,Follow,original,1);
+												for(i=0;i<strlen(First[temp_number]);i++)
+													Add_Terminal_To_List(First[temp_number][i],Follow,original,1);
 												break;
 											}
 											if(fflag == nflag)
@@ -325,7 +326,7 @@ void main(void)
 	{
 		strcpy(Follow[i],"");
 	}
-	printf("\n");
+	// printf("\n");
 	for(Variable_Number=0;Variable_Number<N;Variable_Number++)
 	{	
 		// printf("Main::");

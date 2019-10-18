@@ -1,5 +1,6 @@
-4
-ACD
-A -> #|CD   
+5
+ABCD
+A -> #|CD 
+B -> ads|#
 C -> c|D
 D -> d
