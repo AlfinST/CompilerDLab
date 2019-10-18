@@ -4,6 +4,7 @@
 char Productions_List[100][100][100];
 int FollowFound[100]={0};
 
+//Used to add to both First and Follow based on mode
 void Add_Terminal_To_List(char terminal, char List[100][100],int Variable_Number,int mode)
 {
 	// if(mode)
@@ -33,7 +34,7 @@ void Add_Terminal_To_List(char terminal, char List[100][100],int Variable_Number
 	return;	
 }
 
-
+//Used to Make The Production Table
 int AddProductionsToList( int Variable_Number, char Production[100])
 {	
 	int i,j,len;
@@ -56,7 +57,7 @@ int AddProductionsToList( int Variable_Number, char Production[100])
 	return(Production_Number+1);
 }
 
-
+//Used to Display Entire Table
 void DisplayTransitions(char Variable_List[100],int Corresponding_Number_of_Productions[100],int N)
 {
 	int i,j,z;
@@ -74,7 +75,7 @@ void DisplayTransitions(char Variable_List[100],int Corresponding_Number_of_Prod
 	}
 }
 
-
+// Used to return the location in the list of Variables given the character
 int GetVariableNumber(char Variable,char Variable_list[100],int N)
 {
 	int i = 0,Variable_Number = 0;
@@ -84,7 +85,7 @@ int GetVariableNumber(char Variable,char Variable_list[100],int N)
 	return(Variable_Number);
 }
 
-
+//Recursve function to find the First
 int Find_First(char First[100][100],int Corresponding_Number_of_Productions[100],char Variable_list[100],char original,int Found[],int Total)
 {	
 	// printf("In Func for %c\n",original);
@@ -146,7 +147,7 @@ int Find_First(char First[100][100],int Corresponding_Number_of_Productions[100]
 	return(Nullout);
 }
 
-
+//Recursive Function to find the Follow
 void Follow_Of(char Follow[100][100],char First[100][100],int original,char Variable_List[100],int N,int Corresponding_Number_of_Productions[100],int Found[100])
 {
 	// printf("In Follow(%c)\n",Variable_List[original]);
@@ -335,7 +336,6 @@ void main(void)
 	{
 		strcpy(Follow[i],"");
 	}
-	// printf("\n");
 	for(Variable_Number=0;Variable_Number<N;Variable_Number++)
 	{	
 		// printf("Main::");
