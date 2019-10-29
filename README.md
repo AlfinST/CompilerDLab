@@ -16,4 +16,4 @@ A log of S7 KTU Compiler Design Lab \
 │   └── NFA-DFA-Conversion \
 └── Cycle3 - Parsers \
     ├── First-Follow \
-    └── Operator-Precedence-Parser \
+    └── Operator-Precedence-Parser 
