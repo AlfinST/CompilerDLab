@@ -1,11 +1,3 @@
-/*
-
-	BE SMART AND JUST DO THIS WITH LINKED LISTS.....
-	I WAS BORED AND WANTED OT TRY SOMETHING OUT.
-
-	YOU HAVE BEEN WARNED
-*/
-
 #include <stdio.h>
 #include<string.h>
 struct State
